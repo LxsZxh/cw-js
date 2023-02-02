@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_this绑定规则—默认绑定</title>
+</head>
+
+<body>
+    <script>
+        // "use strict"
+
+        // 定义函数
+        // 1. 普通的函数被独立的调用
+        function foo() {
+            console.log('foo', this)
+        }
+        foo() // 指向 Window
+
+        // 2. 函数定义在对象中，但是独立调用
+        var obj = {
+            name: 'why',
+            bar: function () {
+                console.log('bar', this)
+            }
+        }
+        var baz = obj.bar
+        baz() // 指向 Window
+
+        // 3. 严格模式下，独立调用的函数中的this指向的是undefined
+
+        // 4.
+        function test1() {
+            console.log(this)
+            test2()
+        }
+        function test2() {
+            console.log(this)
+            test3()
+        }
+        function test3() {
+            console.log(this)
+        }
+        test1()
+
+        // 5. 函数作为参数，高阶函数
+        function foo2(func) {
+            func()
+        }
+        var obj2={
+            name: 'why',
+            bar: function () {
+                console.log(this)
+            }
+        }
+        foo2(obj2.bar)
+    </script>
+</body>
+
+</html>

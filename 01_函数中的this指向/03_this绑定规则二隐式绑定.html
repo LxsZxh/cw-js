@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_this绑定规则二隐式绑定</title>
+</head>
+
+<body>
+    <script>
+        // 隐式绑定：在它的调用位置中,是通过某个对象发起的函数调用
+        function foo1() {
+            console.log("foo函数", this);
+        }
+        const obj = {
+            bar: foo1
+        }
+        obj.bar() // 指向obj对象
+
+        // 2.
+        function foo2() {
+            console.log(this);
+        }
+        var obj1 = {
+            name: 'obj1',
+            foo: foo2
+        }
+        var obj2={
+            name:'obj2',
+            obj1:obj1
+        }
+        obj2.obj1.foo() // 指向obj1对象
+
+        // 3.
+        function foo3(){
+            console.log(this)
+        }
+        var obj4={
+            name:'obj4',
+            foo:foo3
+        }
+        var bar=obj4.foo
+        bar() //指向window
+    </script>
+</body>
+
+</html>
