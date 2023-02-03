@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09_this绑定规则优先级</title>
+</head>
+
+<body>
+
+    <script>
+        // 优先级：new > bind > apply/call > 隐式绑定 > 默认绑定
+        function foo() {
+            console.log("foo:", this);
+        }
+        var obj = { name: 'why', foo }
+
+        // 一、显式绑定的优先级高于隐式绑定
+        // 1.1.测试一：apply高于默认绑定
+        obj.foo() // obj对象  隐式绑定
+        obj.foo.apply('aaa') // aaa 显式绑定 > 隐式绑定
+
+        // 1.2.测试二：bind高于默认绑定
+        var bar=foo.bind('bbb')
+        var obj2={
+            name:'jack',
+            baz:bar
+        }
+        obj2.baz() // bbb
+
+        // 二、new绑定优先级高于隐式绑定
+        var obj3={
+            name:'why',
+            foo:function(){
+                console.log("foo:",this)
+                console.log(this===obj);
+            }
+        }
+        new obj3.foo() // {}
+
+        // 3. new 与 显示比较
+        // 3.1 new 不可以和apply/call一起使用，所以不存在谁的优先级更高
+        // 3.2 new 绑定可以和bind一起使用，new 绑定优先级更高
+        var bindFn=foo.bind("aaa")
+        new bindFn() // {}
+
+        // 4. bind/apply优先级
+        // bind优先级高于 apply/call
+        function foo(){
+            console.log("foo:",this);
+        }
+        var bindFn=foo.bind("aaa")
+        bindFn.call("bbb")
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

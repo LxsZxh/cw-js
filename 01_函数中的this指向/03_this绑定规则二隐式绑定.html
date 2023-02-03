@@ -11,6 +11,7 @@
 <body>
     <script>
         // 隐式绑定：在它的调用位置中,是通过某个对象发起的函数调用
+        // 必须在调用的对象内部有一个对函数的引用
         function foo1() {
             console.log("foo函数", this);
         }

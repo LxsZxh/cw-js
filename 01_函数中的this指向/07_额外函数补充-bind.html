@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_额外函数补充-bind</title>
+</head>
+
+<body>
+    <script>
+        // 希望一个函数总是显式的绑定到一个对象上：使用bind方法
+        function foo(name, age, height,address) {
+            console.log("foo:", this);
+            console.log("参数:", name, age, height,address);
+        }
+        var obj = {
+            name: 'why'
+        }
+        // 需求：调用foo时，总是绑定到obj对象身上（不希望obj对象身上有函数）
+        // 1.bind函数的基本使用
+        var bar = foo.bind(obj)
+        bar()
+
+        // 2.bind函数的其它参数
+        var bar2 = foo.bind(obj, "kobe", 18, 1.88)
+        bar2("南京")
+    </script>
+</body>
+
+</html>
