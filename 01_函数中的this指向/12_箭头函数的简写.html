@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_箭头函数的简写</title>
+</head>
+
+<body>
+    <script>
+        // 1. 优化一：如果箭头函数只有一个参数，那么（）可以省略
+        const names = ["abc", "cba", "xyz"]
+        names.forEach(item => console.log(item))
+
+        // 2. 优化二：如果函数体中只有一行代码，那么可以省略大括号，且return也必须省略
+        var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        var newNums = nums.filter(item => item % 2 === 0)
+        console.log(newNums);
+
+        // 3. 优化三：如果默认返回值是一个对象，那么这个对象必须加（）
+        var arrFn = () => ({ name: 'why' })
+        console.log(arrFn);
+
+        // 4. 实现nums所有偶数的平方和 
+        const res = nums.filter(item => item % 2 === 0).map(item => item * item).reduce((prev, item) => prev + item)
+        console.log(res);
+
+    </script>
+
+</body>
+
+</html>

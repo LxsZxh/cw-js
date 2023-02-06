@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_箭头函数-箭头函数的写法</title>
+</head>
+
+<body>
+    <script>
+        // 1. 之前的方式
+        function foo1() { } // 函数声明
+        var foo2 = function () { } // 函数表达式
+
+        // 2. 箭头函数
+        const foo3 = () => { }
+
+        // 3. 箭头函数练习
+        // 3.1 foreach
+        const names = ["abc", "cba", "xyz"]
+        names.forEach(item => console.log(item))
+
+        // 3.2 setTimeout
+        setTimeout(()=>{
+            console.log('setTimeout')
+        },3000)
+       
+    </script>
+</body>
+
+</html>

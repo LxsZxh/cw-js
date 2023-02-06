@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13_箭头函数的this使用</title>
+</head>
+
+<body>
+    <script>
+        // 1. 箭头函数中没有 this
+        const bar = () => {
+            console.log("bar:", this); // 这里的this是window的全局this
+        }
+        bar()
+
+        // 2.this 的查找规则 
+        var obj = {
+            name: 'obj',
+            foo: () => { // 这层作用域没this
+                var bar = () => { // 这层作用域没this
+                    console.log("bar:", this);
+                }
+                return bar // 全局this，window
+            }
+        }
+        var fn = obj.foo()
+        fn.apply('aaa')
+    </script>
+</body>
+
+</html>
