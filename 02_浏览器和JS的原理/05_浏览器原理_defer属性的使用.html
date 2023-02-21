@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">app</div>
+    <div id="title">title</div>
+    <div id="nav">nav</div>
+    <div id="product">product</div>
+    <!-- defer属性告诉浏览器不要等待脚本下载，而继续解析HTML,构建DOM Tree -->
+    <!-- 总结一:加上defer之后，js文件的下载和执行，不会影响后面的DOM Tree的构建 -->
+    <script src="./JS/test.js" defer></script>
+    <!-- defer仅适用于外部脚本，对于script默认内容会被忽略 -->
+    <script>
+        // 总结三：defer代码是在DOMContentLoaded事件发出之前执行 
+        window.addEventListener("DOMContentLoaded",()=>{
+            console.log("DOMContentLoaded")
+        })
+    </script>
+
+    <h1>今天是周二</h1>
+</body>
+
+</html>

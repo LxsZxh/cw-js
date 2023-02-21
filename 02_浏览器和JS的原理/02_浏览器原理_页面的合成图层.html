@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box,.container{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        .container{
+            background-color: red;
+            /* 会生成新的图层 */
+            /* position: fixed; */
+            /* transform: translateZ(100px); */
+            opacity: 0.9;
+            transition: all 1s ease;
+        }
+        .container:hover{
+            transform: translateX(100px);
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">box</div>
+    <div class="container">container</div>
+    
+</body>
+</html>
