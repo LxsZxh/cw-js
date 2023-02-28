@@ -33,3 +33,6 @@
    + async不会能保证DOMContentLoaded之前或者之后执行
 
    > defer通常用于需要在文档解析后操作DOM的JavaScript代码，并且对多个script文件有顺序要求的
+
+## 认识VO对象
+   + 每一个执行上下文会关联一个VO（变量对象），变量和函数声明会被添加到这个VO对象中
